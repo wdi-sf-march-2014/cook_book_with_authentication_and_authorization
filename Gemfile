@@ -5,7 +5,7 @@ gem 'pry'
 gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
 gem 'bootstrap-sass', '~> 3.0.3.0'
 
-gem 'sqlite3'
+gem 'pg'
 gem 'bcrypt-ruby','3.1.2'
 
 gem 'coffee-rails'

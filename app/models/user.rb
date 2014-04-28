@@ -23,10 +23,9 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
-  has_many :books
+  has_many :recipes
 
-    private
-
+  private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end

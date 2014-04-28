@@ -7,7 +7,6 @@ class CreateRecipes < ActiveRecord::Migration
       t.integer :servingsize
       t.text :instructions
       t.text :image
-      t.integer :book_id
       t.timestamps
     end
   end

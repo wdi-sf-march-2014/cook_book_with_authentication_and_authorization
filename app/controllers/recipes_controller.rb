@@ -4,28 +4,38 @@ class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
   end
+
   def new
     @recipe = Recipe.new
   end
+
   def create
-    new_recipe = params.require(:recipe).permit(:name, :course, :cooktime, :servingsize, :instructions, :image, :book_id, :ingredient_ids)
-    recipe = Recipe.create(new_recipe)
+    recipe = Recipe.create recipe_params
     redirect_to(recipe)
   end
+
   def show
     @recipe = Recipe.find(params[:id])
   end
+
   def edit
     @recipe = Recipe.find(params[:id])
   end
+
   def update
     recipe = Recipe.find(params[:id])
-    recipe.update_attributes(params[:recipe])
+    recipe.update_attributes recipe_params
     redirect_to(recipe)
   end
+
   def destroy
     recipe = Recipe.find(params[:id])
     recipe.delete
     redirect_to(recipes_path)
   end
+
+  private
+    def recipe_params
+      params.require(:recipe).permit(:name, :course, :cooktime, :servingsize, :instructions, :image)
+    end
 end

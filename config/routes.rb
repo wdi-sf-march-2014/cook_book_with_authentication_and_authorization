@@ -1,7 +1,7 @@
 CookBook::Application.routes.draw do
-  resources :books, :recipes, :ingredients, :users, :sessions
+  resources :recipes, :ingredients, :users, :sessions
 
-  root to: 'books#index'
+  root to: 'recipes#index'
 
   get '/signup' => 'users#new'
   match '/signout', to: 'sessions#destroy', via: :delete

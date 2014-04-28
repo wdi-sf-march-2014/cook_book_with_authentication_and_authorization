@@ -2,8 +2,7 @@ class CreateIngredients < ActiveRecord::Migration
   def change
     create_table :ingredients do |t|
       t.string :name
-      t.string :measurement
-      t.decimal :cost
+      t.string :brand
       t.text :image
       t.timestamps
     end

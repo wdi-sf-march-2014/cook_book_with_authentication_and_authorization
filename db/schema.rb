@@ -11,30 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131175830) do
+ActiveRecord::Schema.define(version: 20140428213759) do
 
-  create_table "books", force: true do |t|
-    t.string   "title"
-    t.string   "cuisine"
-    t.string   "chef"
-    t.text     "image"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "ingredient_measurments", force: true do |t|
+    t.integer  "recipe_id"
+    t.integer  "ingredient_id"
+    t.string   "measurement"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
+
+  add_index "ingredient_measurments", ["ingredient_id"], name: "index_ingredient_measurments_on_ingredient_id", using: :btree
+  add_index "ingredient_measurments", ["recipe_id"], name: "index_ingredient_measurments_on_recipe_id", using: :btree
 
   create_table "ingredients", force: true do |t|
     t.string   "name"
-    t.string   "measurement"
-    t.decimal  "cost"
+    t.string   "brand"
     t.text     "image"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "ingredients_recipes", id: false, force: true do |t|
-    t.integer "ingredient_id"
-    t.integer "recipe_id"
   end
 
   create_table "recipes", force: true do |t|
@@ -44,10 +42,12 @@ ActiveRecord::Schema.define(version: 20140131175830) do
     t.integer  "servingsize"
     t.text     "instructions"
     t.text     "image"
-    t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -58,6 +58,6 @@ ActiveRecord::Schema.define(version: 20140131175830) do
     t.string   "remember_token"
   end
 
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end

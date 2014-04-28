@@ -1,9 +1,9 @@
-module BooksHelper
-	def check_book_owner
-		book = current_user.books.where(:id => params[:id]).first
-    	if book.nil?
-    		flash[:error] = "That's not your book."
-			redirect_to book_path(params[:id])
+module RecipesHelper
+	def check_recipe_owner
+		recipe = current_user.recipes.where(:id => params[:id]).first
+    if recipe.nil?
+    	flash[:error] = "That's not your recipe."
+			redirect_to recipe_path(params[:id])
 		end
 	end
 end

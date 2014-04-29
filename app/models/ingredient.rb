@@ -12,6 +12,6 @@
 #
 
 class Ingredient < ActiveRecord::Base
-  has_many :ingredient_measurments
-  has_many :ingredients, through: :ingredient_measurments
+  has_many :ingredient_measurements
+  has_many :ingredients, through: :ingredient_measurements
 end

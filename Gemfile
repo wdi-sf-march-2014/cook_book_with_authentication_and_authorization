@@ -16,6 +16,8 @@ gem 'uglifier', '>= 1.0.3'
 group :development, :test do
   gem 'pry'
   gem 'dotenv-rails'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 

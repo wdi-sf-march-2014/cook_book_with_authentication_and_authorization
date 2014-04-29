@@ -18,4 +18,6 @@ class Recipe < ActiveRecord::Base
   belongs_to :user
   has_many :ingredient_measurements
   has_many :ingredients, through: :ingredient_measurements
+
+  validates :user, presence: true
 end

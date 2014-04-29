@@ -5,7 +5,9 @@
 
 - clone this repo
 - cd in project root dir
+- make a .env file a value for SECRET_KEY_BASE
 - bundle update
+- rake db:create
 - rake db:migrate
 - rake db:seed
 - start rails server

@@ -43,7 +43,7 @@ module SessionsHelper
   # if current_user doesn't exist, check session cookie for user session
   # If exists, get the user record that belongs to that session.
   def current_user
-    @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+    @current_user ||= User.find_by(remember_token: cookies[:remember_token])
   end
 
 end

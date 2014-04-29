@@ -1,5 +1,8 @@
 class RecipesController < ApplicationController
-  before_filter :signed_in_user, only: [:create, :new, :edit, :update]
+  include RecipesHelper
+
+  before_filter :signed_in_user, only: [:create, :new, :edit, :update, :destroy]
+  before_filter :check_recipe_owner, only: [:edit, :update, :destroy]
 
   def index
     @recipes = Recipe.all
@@ -16,6 +19,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @ingredients = @recipe.ingredients
   end
 
   def edit

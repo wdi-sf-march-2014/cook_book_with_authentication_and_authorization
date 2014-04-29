@@ -12,7 +12,7 @@
   </div>
 
   <div class="col-md-7 col-sm-7">
-    <% @recipe.ingredients.each do |ingredient| %>
+    <% @ingredients.each do |ingredient| %>
       <%= ingredient.name %>
       <%= image_tag(ingredient.image,  size: "40x40") %>
     <% end %>

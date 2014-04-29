@@ -3,8 +3,8 @@ CookBook::Application.routes.draw do
 
   root to: 'recipes#index'
 
-  get '/signup' => 'users#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
-  get'/signin' => 'sessions#new'
+  get '/signup', to: 'users#new'
+  delete '/signout', to: 'sessions#destroy'
+  get'/signin', to: 'sessions#new'
 end
 

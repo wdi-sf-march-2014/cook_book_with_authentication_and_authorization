@@ -9,6 +9,9 @@
   <div class="col-md-5 col-sm-5">
     <p class="lead"><%= @recipe.name %></p>
     <%= image_tag(@recipe.image) %>
+    <br>
+    <h5 id="instructions-title">Instructions:</h5>
+    <p class="instructions"><%= @recipe.instructions %></p>
   </div>
 
   <div class="col-md-7 col-sm-7">

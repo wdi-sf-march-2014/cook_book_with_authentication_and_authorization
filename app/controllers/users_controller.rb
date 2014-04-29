@@ -9,8 +9,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    new_user = params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    @user=User.new(new_user)
+    @user=User.new(user_params)
     if @user.save
       flash[:success] = "Welcome to the Cook Book app!"
       sign_in @user
@@ -22,9 +21,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(params[:user])
-    render :show
+    @user.update_attributes(user_params)
+    redirect_to @user
   end
 
+  private
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
 end
 

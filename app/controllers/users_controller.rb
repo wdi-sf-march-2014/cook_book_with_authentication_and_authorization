@@ -15,7 +15,8 @@ class UsersController < ApplicationController
       sign_in @user
       redirect_to @user
     else
-      render'new'
+      flash[:error] = "Failed to create account.  Try again."
+      redirect_to new_user_path
     end
   end
 
